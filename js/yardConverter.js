@@ -4,32 +4,28 @@ var pluralize = function(unit, value) {
 }
   
 var mileBased = function(yardsParam){
-	var yards = yardsParam % (220 * 8),
+	var yardsFraction = yardsParam % (220 * 8),
 		miles = Math.floor(yardsParam/(220 * 8)),
 		result = '';
 
-	var fraction;
-
-	fraction = yards/(200 * 8);
-
-	switch(yards){
+	switch(yardsFraction){
   		case 1320:
-			result = miles + ' 3/4 ' + pluralize('mile', miles);
+			result = miles + ' 3/4 mile';
 			break;
 		case 880:
-			result = miles + ' 1/2 ' + pluralize('mile', miles);
+			result = miles + ' 1/2 mile';
 			break;
 		case 440:
-			result = miles + ' 1/4 ' + pluralize('mile', miles);
+			result = miles + ' 1/4 mile';
 			break;
 		case 220:
-			result = miles + ' 1/8 ' + pluralize('mile', miles);
+			result = miles + ' 1/8 mile';
 			break;
 		case 0:
 			result = miles + ' ' + pluralize('mile', miles);
 			break;
 		default:
-			result = miles + ' ' + pluralize('mile', miles) + ' ' + yards + ' ' + pluralize('yard', yards);
+			result = miles + ' ' + pluralize('mile', miles) + ' ' + yardsFraction + ' ' + pluralize('yard', yardsFraction);
 	}
 
 	return result;		
